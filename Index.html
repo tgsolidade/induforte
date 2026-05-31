@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Induforte Consultoria | Aumente o Lucro da sua Fábrica</title>
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* === VARIÁVEIS DE CORES === */
+        :root {
+            --azul-escuro: #0A192F;
+            --azul-medio: #112240;
+            --amarelo-ouro: #FACC15;
+            --amarelo-hover: #EAB308;
+            --branco: #FFFFFF;
+            --cinza-claro: #F8FAFC;
+            --cinza-texto: #475569;
+            --texto-escuro: #0F172A;
+            --vermelho-alerta: #EF4444;
+            --verde-sucesso: #22C55E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--branco);
+            color: var(--texto-escuro);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* === CONFIGURAÇÕES DA LOGO NEGATIVA === */
+        .logo-nav-img {
+            max-height: 75px; 
+            width: auto;
+            display: block;
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+        .logo-hero-img {
+            max-height: 140px; 
+            width: auto;
+            margin: 0 auto 30px;
+            display: block;
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+        .logo-footer-wrapper {
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .logo-footer-img {
+            max-height: 100px; 
+            width: auto;
+            display: block;
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+        /* === CABEÇALHO DE NAVEGAÇÃO (NAVBAR ESCURA) === */
+        .navbar {
+            background-color: rgba(10, 25, 47, 0.98); 
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px 0; 
+            border-bottom: 3px solid var(--amarelo-ouro);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3); 
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-nav {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links li a {
+            color: var(--branco); 
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links li a:hover {
+            color: var(--amarelo-hover);
+        }
+
+        /* === BOTÕES (CTAs) === */
+        .btn {
+            display: inline-block;
+            background-color: var(--amarelo-ouro);
+            color: var(--azul-escuro);
+            font-weight: 800;
+            font-size: 1.1rem;
+            padding: 15px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(250, 204, 21, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--amarelo-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(250, 204, 21, 0.6);
+        }
+
+        /* === TIPOGRAFIA GERAL === */
+        h1, h2, h3, h4 {
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .titulo-secao {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--azul-escuro);
+        }
+
+        .subtitulo-secao {
+            text-align: center;
+            color: var(--cinza-texto);
+            font-size: 1.2rem;
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .bg-escuro {
+            background-color: var(--azul-escuro);
+            color: var(--branco);
+            background-image: radial-gradient(circle at 50% 0%, #112240 0%, transparent 70%);
+        }
+
+        .bg-escuro .titulo-secao,
+        .bg-escuro .subtitulo-secao {
+            color: var(--branco);
+        }
+
+        .bg-claro {
+            background-color: var(--cinza-claro);
+        }
+
+        /* === HERO SECTION === */
+        .hero {
+            background-color: var(--azul-escuro);
+            background-image: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.95)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--branco);
+            padding: 200px 0 80px; 
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero h1 span {
+            color: var(--amarelo-ouro);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #CBD5E1;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item h3 {
+            color: var(--amarelo-ouro);
+            font-size: 2.8rem;
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #94A3B8;
+        }
+
+        /* === GRID DIVIDIDO === */
+        .grid-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        /* === INSTITUCIONAL === */
+        .institucional-box h3 {
+            font-size: 1.8rem;
+            color: var(--azul-escuro);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .institucional-box p {
+            margin-bottom: 20px;
+            color: var(--cinza-texto);
+            font-size: 1.1rem;
+        }
+
+        .valores-lista {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .valores-lista li {
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--texto-escuro);
+        }
+
+        .valores-lista i {
+            color: var(--amarelo-ouro);
+            margin-right: 10px;
+        }
+
+        .politicas-box {
+            background-color: var(--cinza-claro);
+            padding: 20px;
+            border-left: 4px solid var(--amarelo-ouro);
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+
+        /* === FORMATAÇÃO DO ROI (RETORNO FINANCEIRO) === */
+        .roi-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .roi-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background-color: var(--cinza-claro);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 5px solid var(--verde-sucesso);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .roi-item i {
+            font-size: 2rem;
+            color: var(--verde-sucesso);
+            margin-top: 5px;
+        }
+
+        .roi-texto h4 {
+            font-size: 1.3rem;
+            color: var(--azul-escuro);
+            margin-bottom: 8px;
+        }
+
+        .roi-texto p {
+            font-size: 1.05rem;
+            color: var(--cinza-texto);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .card-lucro {
+            background-color: var(--verde-sucesso);
+            color: var(--branco);
+            padding: 50px 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(34, 197, 94, 0.3);
+        }
+
+        .card-lucro h3 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card-lucro p {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* === COMPARTILHADOS === */
+        .comparativo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .card-dor, .card-solucao { background: var(--branco); padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .card-dor { border-top: 5px solid var(--vermelho-alerta); }
+        .card-solucao { border-top: 5px solid var(--verde-sucesso); }
+        .lista-check { list-style: none; margin-top: 20px; }
+        .lista-check li { margin-bottom: 15px; display: flex; align-items: flex-start; gap: 15px; font-size: 1.1rem; color: var(--cinza-texto); }
+
+        .servicos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .servico-card { background-color: var(--azul-medio); padding: 40px 30px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); transition: transform 0.3s; }
+        .servico-card:hover { transform: translateY(-10px); border-color: var(--amarelo-ouro); }
+        .servico-card i { font-size: 3rem; color: var(--amarelo-ouro); margin-bottom: 20px; }
+        .servico-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .servico-card p { color: #94A3B8; margin-bottom: 20px; }
+        .servico-card ul { list-style: none; color: #CBD5E1; }
+        .servico-card ul li { margin-bottom: 10px; padding-left: 20px; position: relative; }
+        .servico-card ul li::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--amarelo-ouro); position: absolute; left: 0; font-size: 0.9rem; }
+        .card-destaque { border: 2px solid var(--amarelo-ouro); box-shadow: 0 0 20px rgba(250, 204, 21, 0.15); }
+
+        .equipe-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; }
+        .equipe-card { background: var(--branco); padding: 40px 30px; border-radius: 12px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-bottom: 4px solid var(--amarelo-ouro); transition: transform 0.3s; }
+        .equipe-card:hover { transform: translateY(-10px); }
+        .equipe-icon { width: 80px; height: 80px; background-color: var(--azul-escuro); color: var(--amarelo-ouro); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; margin: 0 auto 20px; }
+        .equipe-card h4 { color: var(--azul-escuro); font-size: 1.3rem; margin-bottom: 10px; }
+        .equipe-card p { color: var(--cinza-texto); font-size: 0.95rem; font-weight: 600; }
+        .equipe-card span { display: block; margin-top: 15px; font-size: 0.85rem; color: #64748b; }
+
+        footer { background-color: var(--azul-escuro); color: var(--branco); padding: 60px 0 30px; border-top: 5px solid var(--amarelo-ouro); }
+        .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .contato-info { list-style: none; }
+        .contato-info li { margin-bottom: 15px; font-size: 1.1rem; display: flex; align-items: center; gap: 15px; }
+        .contato-info i { color: var(--amarelo-ouro); font-size: 1.3rem; }
+
+        /* Responsividade */
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .grid-split { grid-template-columns: 1fr; }
+            .grid-split img { order: -1; } 
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .stats-bar { flex-direction: column; gap: 20px; }
+            .comparativo-grid, .footer-grid { grid-template-columns: 1fr; }
+            .equipe-grid { grid-template-columns: 1fr; }
+            .roi-item { flex-direction: column; text-align: center; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO DE NAVEGAÇÃO -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <!-- LOGO DO MENU -->
+            <a href="#inicio" class="logo-nav">
+                <img src="logo negativa.png" alt="Induforte Consultoria" class="logo-nav-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#quem-somos">Quem Somos</a></li>
+                <li><a href="#equipe">A Equipe</a></li>
+                <li><a href="#solucoes">Soluções</a></li>
+                <li><a href="#retorno-financeiro">Retorno Financeiro</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION (INÍCIO) -->
+    <header id="inicio" class="hero">
+        <div class="container">
+            <!-- LOGO DA CAPA -->
+            <img src="logo negativa.png" alt="Induforte Consultoria" class="logo-hero-img">
+            
+            <h1>Transforme o <span>Caos Operacional</span> em Produtividade e Lucro</h1>
+            <p>Nossa equipe atua diretamente no chão de fábrica para eliminar desperdícios, garantir a qualidade e estruturar sua indústria para crescer com consistência.</p>
+            
+            <a href="#contato" class="btn">Quero Otimizar Minha Fábrica</a>
+
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <h3>10+</h3>
+                    <p>Anos de Experiência</p>
+                </div>
+                <div class="stat-item">
+                    <h3>150+</h3>
+                    <p>Empresas Atendidas</p>
+                </div>
+                <div class="stat-item">
+                    <h3>95%</h3>
+                    <p>Clientes Satisfeitos</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- QUEM SOMOS, VALORES E POLÍTICAS -->
+    <section id="quem-somos" class="bg-branco">
+        <div class="container">
+            <div class="grid-split">
+                <!-- IMAGEM ATUALIZADA DO CHÃO DE FÁBRICA -->
+                <div>
+                    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Especialistas de Gestão Industrial na Fábrica">
+                </div>
+                
+                <div class="institucional-box">
+                    <h3><i class="fas fa-industry"></i> Quem Somos</h3>
+                    <p>Somos uma consultoria composta por profissionais forjados no chão de fábrica. Não oferecemos conselhos de escritório; nós vestimos os EPIs, mapeamos processos e implementamos soluções práticas que transformam operações industriais em ambientes produtivos, organizados e rentáveis.</p>
+                    
+                    <h3><i class="fas fa-gem"></i> Nossos Valores</h3>
+                    <ul class="valores-lista">
+                        <li><i class="fas fa-check"></i> <strong>Visão Sistêmica:</strong> Otimizamos o todo, não apenas as partes.</li>
+                        <li><i class="fas fa-check"></i> <strong>Foco em Resultados:</strong> Decisões guiadas por dados e indicadores (KPIs).</li>
+                        <li><i class="fas fa-check"></i> <strong>Ética e Transparência:</strong> Diagnósticos reais e compromisso com o que prometemos.</li>
+                    </ul>
+
+                    <div class="politicas-box">
+                        <h4 style="margin-bottom: 10px; color: var(--azul-escuro);"><i class="fas fa-shield-alt"></i> Nossas Políticas</h4>
+                        <p style="font-size: 0.95rem; margin-bottom: 0;">Trabalhamos sob estritos acordos de <strong>Confidencialidade (NDA)</strong>. Protegemos os dados operacionais e o segredo industrial da sua fábrica. Nossa política de qualidade exige que nenhum projeto seja finalizado sem documentação (POP) e equipe devidamente treinada para manter os ganhos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O PROBLEMA E A SOLUÇÃO -->
+    <section class="bg-claro">
+        <div class="container">
+            <h2 class="titulo-secao">O Crescimento Desordenado Custa Caro</h2>
+            <p class="subtitulo-secao">Gargalos operacionais sugam sua margem de lucro todos os dias. Compare o seu cenário atual com a excelência que a Induforte entrega.</p>
+            
+            <div class="comparativo-grid">
+                <div class="card-dor">
+                    <h3 style="color: var(--vermelho-alerta); font-size: 1.8rem;"><i class="fas fa-exclamation-triangle"></i> O Cenário Atual</h3>
+                    <ul class="lista-check">
+                        <li><i class="fas fa-times-circle" style="color: var(--vermelho-alerta);"></i> Falta de organização e chão de fábrica caótico.</li>
+                        <li><i class="fas fa-times-circle" style="color: var(--vermelho-alerta);"></i> Baixa produtividade e alto desperdício de insumos.</li>
+                        <li><i class="fas fa-times-circle" style="color: var(--vermelho-alerta);"></i> Falhas frequentes de qualidade nos lotes.</li>
+                        <li><i class="fas fa-times-circle" style="color: var(--vermelho-alerta);"></i> Máquinas desreguladas e paradas constantes.</li>
+                    </ul>
+                </div>
+
+                <div class="card-solucao">
+                    <h3 style="color: var(--verde-sucesso); font-size: 1.8rem;"><i class="fas fa-chart-line"></i> Nossa Entrega</h3>
+                    <ul class="lista-check">
+                        <li><i class="fas fa-check-circle" style="color: var(--verde-sucesso);"></i> Fábrica organizada, limpa e padronizada.</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--verde-sucesso);"></i> Produtividade e eficiência aumentadas (OEE).</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--verde-sucesso);"></i> Qualidade controlada e auditada continuamente.</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--verde-sucesso);"></i> Máquinas operando em alta performance.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- A MÁQUINA DE LUCRO (RETORNO FINANCEIRO) -->
+    <section id="retorno-financeiro" class="bg-branco">
+        <div class="container">
+            <h2 class="titulo-secao">Nós Não Vendemos Documentos. Vendemos Lucro.</h2>
+            <p class="subtitulo-secao">Toda a nossa estruturação de PCP, Qualidade e Gestão de Máquinas tem um único objetivo prático: colocar mais dinheiro no caixa da sua indústria.</p>
+            
+            <div class="grid-split">
+                <div>
+                    <h3 style="font-size: 1.6rem; color: var(--azul-escuro); margin-bottom: 10px;">Como nosso trabalho gera Retorno Financeiro (ROI) imediato:</h3>
+                    
+                    <div class="roi-list">
+                        <!-- CARD 1 -->
+                        <div class="roi-item">
+                            <i class="fas fa-arrow-trend-down"></i>
+                            <div class="roi-texto">
+                                <h4>Redução de Desperdícios</h4>
+                                <p>Menos matéria-prima jogada no lixo é dinheiro direto no caixa.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- CARD 2 -->
+                        <div class="roi-item">
+                            <i class="fas fa-clock"></i>
+                            <div class="roi-texto">
+                                <h4>Redução de Setup e Paradas</h4>
+                                <p>Mais horas de máquina rodando significa maior volume de faturamento mensal.</p>
+                            </div>
+                        </div>
+
+                        <!-- CARD 3 -->
+                        <div class="roi-item">
+                            <i class="fas fa-calendar-check"></i>
+                            <div class="roi-texto">
+                                <h4>Precisão no PCP</h4>
+                                <p>Fim das multas por atraso de entrega e fim do capital de giro travado em estoque excessivo.</p>
+                            </div>
+                        </div>
+
+                        <!-- CARD 4 -->
+                        <div class="roi-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <div class="roi-texto">
+                                <h4>Qualidade Assegurada</h4>
+                                <p>Eliminação drástica de devoluções e retrabalhos que corroem a sua margem.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-lucro">
+                    <i class="fas fa-chart-pie fa-4x" style="margin-bottom: 20px;"></i>
+                    <h3>Impacto Real</h3>
+                    <p>Clientes da Induforte relatam, em média:</p>
+                    <div style="display: flex; justify-content: space-around; margin-top: 40px;">
+                        <div>
+                            <h4 style="font-size: 3rem; color: var(--amarelo-ouro);">+35%</h4>
+                            <span style="font-size: 1rem; text-transform: uppercase; font-weight: 600;">Produtividade</span>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 3rem; color: var(--amarelo-ouro);">-40%</h4>
+                            <span style="font-size: 1rem; text-transform: uppercase; font-weight: 600;">Desperdícios</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EQUIPE DE ESPECIALISTAS -->
+    <section id="equipe" class="bg-claro">
+        <div class="container">
+            <h2 class="titulo-secao">A Equipe Multidisciplinar</h2>
+            <p class="subtitulo-secao">Somando mais de 10 anos de experiência e um histórico de mais de 150 empresas atendidas, nossa equipe ataca todas as frentes críticas da sua fábrica.</p>
+
+            <div class="equipe-grid">
+                <div class="equipe-card">
+                    <div class="equipe-icon"><i class="fas fa-user-tie"></i></div>
+                    <h4>Especialista em Gestão</h4>
+                    <p>Gerência Industrial</p>
+                    <span>Visão macro, alinhamento de lideranças e foco em rentabilidade e metas globais da planta.</span>
+                </div>
+
+                <div class="equipe-card">
+                    <div class="equipe-icon"><i class="fas fa-project-diagram"></i></div>
+                    <h4>Especialista em PCP e Dados</h4>
+                    <p>Lean Six Sigma Black Belt</p>
+                    <span>Controle de planejamento, programação, análise de KPIs e eliminação sistemática de gargalos.</span>
+                </div>
+
+                <div class="equipe-card">
+                    <div class="equipe-icon"><i class="fas fa-flask"></i></div>
+                    <h4>Especialista em Qualidade</h4>
+                    <p>Engenharia Química</p>
+                    <span>Padronização de processos (POP), auditorias rigorosas e controle absoluto de conformidade do produto.</span>
+                </div>
+
+                <div class="equipe-card">
+                    <div class="equipe-icon"><i class="fas fa-cogs"></i></div>
+                    <h4>Supervisor de Produção</h4>
+                    <p>Especialista em Máquinas</p>
+                    <span>Domínio prático em linhas de envase, embaladoras e enfardadeiras. Foco em Setup e redução de paradas.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOSSAS SOLUÇÕES / SERVIÇOS -->
+    <section id="solucoes" class="bg-escuro">
+        <div class="container">
+            <h2 class="titulo-secao">Pilares da Nossa Atuação</h2>
+            <p class="subtitulo-secao">Soluções integradas e aplicadas diretamente na operação.</p>
+            
+            <div class="servicos-grid">
+                <div class="servico-card">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>PCP e Planejamento</h3>
+                    <p>Otimização de recursos guiada por dados precisos.</p>
+                    <ul>
+                        <li>Planejamento produtivo</li>
+                        <li>Controle de programação</li>
+                        <li>Balanceamento produtivo</li>
+                    </ul>
+                </div>
+
+                <div class="servico-card card-destaque">
+                    <i class="fas fa-check-double"></i>
+                    <h3>Qualidade Industrial</h3>
+                    <p>Excelência química e operacional para o seu produto.</p>
+                    <ul>
+                        <li>Implantação de Qualidade Total</li>
+                        <li>Procedimentos Padrão (POP)</li>
+                        <li>Tratativa de Não Conformidades</li>
+                    </ul>
+                </div>
+
+                <div class="servico-card">
+                    <i class="fas fa-industry"></i>
+                    <h3>Montagem e Produção</h3>
+                    <p>Máquinas operando na sua capacidade máxima, sem gargalos.</p>
+                    <ul>
+                        <li>Instalação de linhas e Startup</li>
+                        <li>Regulagem de envase e embaladoras</li>
+                        <li>Treinamento técnico de operadores</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION FINAL (RODAPÉ) -->
+    <footer id="contato">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <!-- LOGO DO RODAPÉ -->
+                    <div class="logo-footer-wrapper">
+                        <img src="logo negativa.png" alt="Induforte Consultoria" class="logo-footer-img">
+                    </div>
+                    
+                    <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: var(--amarelo-ouro);">Eleve o nível da sua operação.</h2>
+                    <p style="font-size: 1.2rem; color: #CBD5E1; margin-bottom: 30px;">
+                        Pare de perder dinheiro para a desorganização. Fale com nossa equipe de especialistas e agende um diagnóstico técnico.
+                    </p>
+                    <a href="https://wa.me/5500000000000" class="btn" target="_blank"><i class="fab fa-whatsapp"></i> Falar com a Equipe</a>
+                </div>
+                
+                <div style="background-color: var(--azul-medio); padding: 40px; border-radius: 8px;">
+                    <h3 style="margin-bottom: 25px; border-bottom: 2px solid var(--amarelo-ouro); padding-bottom: 10px; display: inline-block;">Contatos Diretos</h3>
+                    <ul class="contato-info">
+                        <li><i class="fas fa-users"></i> Equipe Induforte Consultoria</li>
+                        <li><i class="fab fa-whatsapp"></i> (xx) 9XXXX-XXXX</li>
+                        <li><i class="fas fa-envelope"></i> contato@induforte.com.br</li>
+                        <li><i class="fab fa-linkedin"></i> linkedin.com/company/induforte</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; color: #64748b;">
+                &copy; 2026 Induforte Consultoria. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT PARA FORÇAR O TOPO AO ATUALIZAR (F5) -->
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        
+        window.onload = function() {
+            window.scrollTo(0, 0);
+        };
+    </script>
+</body>
+</html>
