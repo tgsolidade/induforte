@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Induforte Consultoria | Aumente o Lucro da sua Fábrica</title>
     <!-- Fontes -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -32,6 +32,12 @@
             scroll-behavior: smooth;
         }
 
+        /* TRAVA CONTRA ROLAGEM HORIZONTAL NO CELULAR */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
         body {
             background-color: var(--branco);
             color: var(--texto-escuro);
@@ -42,10 +48,12 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            width: 100%;
         }
 
         img {
             max-width: 100%;
+            height: auto;
             border-radius: 12px;
             object-fit: cover;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -53,20 +61,16 @@
 
         /* === CONFIGURAÇÕES DA LOGO NEGATIVA === */
         .logo-nav-img {
-            max-height: 75px; 
+            max-height: 60px; 
             width: auto;
             display: block;
-            box-shadow: none;
-            border-radius: 0;
         }
 
         .logo-hero-img {
-            max-height: 140px; 
+            max-height: 120px; 
             width: auto;
             margin: 0 auto 30px;
             display: block;
-            box-shadow: none;
-            border-radius: 0;
         }
 
         .logo-footer-wrapper {
@@ -75,14 +79,12 @@
         }
 
         .logo-footer-img {
-            max-height: 100px; 
+            max-height: 80px; 
             width: auto;
             display: block;
-            box-shadow: none;
-            border-radius: 0;
         }
 
-        /* === CABEÇALHO DE NAVEGAÇÃO (NAVBAR ESCURA) === */
+        /* === CABEÇALHO DE NAVEGAÇÃO (NAVBAR ESCURA) E MENU MOBILE === */
         .navbar {
             background-color: rgba(10, 25, 47, 0.98); 
             backdrop-filter: blur(10px);
@@ -99,12 +101,22 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .logo-nav {
             text-decoration: none;
             display: flex;
             align-items: center;
+        }
+
+        /* Toggle Menu Hamburger Invisível por padrão */
+        .menu-toggle { display: none; }
+        .menu-icon {
+            display: none;
+            font-size: 1.8rem;
+            color: var(--amarelo-ouro);
+            cursor: pointer;
         }
 
         .nav-links {
@@ -142,6 +154,7 @@
             box-shadow: 0 4px 15px rgba(250, 204, 21, 0.4);
             border: none;
             cursor: pointer;
+            text-align: center;
         }
 
         .btn:hover {
@@ -154,6 +167,7 @@
         h1, h2, h3, h4 {
             font-weight: 800;
             line-height: 1.2;
+            word-wrap: break-word; /* Força palavras grandes a quebrarem no celular */
         }
 
         .titulo-secao {
@@ -199,7 +213,7 @@
             background-size: cover;
             background-position: center;
             color: var(--branco);
-            padding: 200px 0 80px; 
+            padding: 180px 0 80px; 
             text-align: center;
         }
 
@@ -356,7 +370,8 @@
         .lista-check { list-style: none; margin-top: 20px; }
         .lista-check li { margin-bottom: 15px; display: flex; align-items: flex-start; gap: 15px; font-size: 1.1rem; color: var(--cinza-texto); }
 
-        .servicos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        /* Ajuste do grid para evitar overflow na tela */
+        .servicos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
         .servico-card { background-color: var(--azul-medio); padding: 40px 30px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); transition: transform 0.3s; }
         .servico-card:hover { transform: translateY(-10px); border-color: var(--amarelo-ouro); }
         .servico-card i { font-size: 3rem; color: var(--amarelo-ouro); margin-bottom: 20px; }
@@ -378,33 +393,91 @@
         footer { background-color: var(--azul-escuro); color: var(--branco); padding: 60px 0 30px; border-top: 5px solid var(--amarelo-ouro); }
         .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
         .contato-info { list-style: none; }
-        .contato-info li { margin-bottom: 15px; font-size: 1.1rem; display: flex; align-items: center; gap: 15px; }
-        .contato-info i { color: var(--amarelo-ouro); font-size: 1.3rem; }
+        .contato-info li { margin-bottom: 15px; font-size: 1.1rem; display: flex; align-items: center; gap: 15px; word-break: break-all; }
+        .contato-info i { color: var(--amarelo-ouro); font-size: 1.3rem; min-width: 25px; }
 
-        /* Responsividade */
+        /* =========================================
+           RESPONSIVIDADE (O SEGREDO PARA O MOBILE)
+           ========================================= */
+
+        /* Tablets e Telas Médias */
         @media (max-width: 900px) {
-            .nav-links { display: none; }
             .grid-split { grid-template-columns: 1fr; }
             .grid-split img { order: -1; } 
+            
+            /* Ativando o Menu Hamburguer */
+            .menu-icon { display: block; }
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(10, 25, 47, 0.98);
+                flex-direction: column;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+            }
+            .nav-links li {
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+            }
+            .nav-links li a {
+                display: block;
+                padding: 15px 0;
+            }
+            /* Ação de abrir o menu */
+            .menu-toggle:checked ~ .nav-links {
+                max-height: 350px;
+            }
         }
+
+        /* Celulares */
         @media (max-width: 768px) {
+            section { padding: 60px 0; }
+            
+            /* Ajustando as fontes grandes que empurravam a tela */
+            .hero { padding: 130px 0 60px; }
             .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1.1rem; }
+            .titulo-secao { font-size: 1.8rem; }
+            .subtitulo-secao { font-size: 1rem; margin-bottom: 40px; }
+            
+            /* Ajustando espaçamentos */
             .stats-bar { flex-direction: column; gap: 20px; }
             .comparativo-grid, .footer-grid { grid-template-columns: 1fr; }
             .equipe-grid { grid-template-columns: 1fr; }
-            .roi-item { flex-direction: column; text-align: center; align-items: center; }
+            
+            /* Ajuste do card de ROI para centralizar no celular */
+            .roi-item { 
+                flex-direction: column; 
+                text-align: center; 
+                align-items: center; 
+                padding: 20px 15px; 
+            }
+            .card-lucro { padding: 30px 20px; }
+            .card-dor, .card-solucao { padding: 25px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- CABEÇALHO DE NAVEGAÇÃO -->
+    <!-- CABEÇALHO DE NAVEGAÇÃO COM MENU MOBILE -->
     <nav class="navbar">
         <div class="container nav-container">
             <!-- LOGO DO MENU -->
             <a href="#inicio" class="logo-nav">
                 <img src="logo negativa.png" alt="Induforte Consultoria" class="logo-nav-img">
             </a>
+
+            <!-- Checkbox invisível e o Botão do Menu Hamburguer -->
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">
+                <i class="fas fa-bars"></i>
+            </label>
+
+            <!-- Links -->
             <ul class="nav-links">
                 <li><a href="#inicio">Início</a></li>
                 <li><a href="#quem-somos">Quem Somos</a></li>
@@ -685,8 +758,9 @@
         </div>
     </footer>
 
-    <!-- SCRIPT PARA FORÇAR O TOPO AO ATUALIZAR (F5) -->
+    <!-- SCRIPT PARA FORÇAR O TOPO AO ATUALIZAR E FECHAR O MENU MOBILE AO CLICAR -->
     <script>
+        // Impede de lembrar o scroll anterior
         if ('scrollRestoration' in history) {
             history.scrollRestoration = 'manual';
         }
@@ -694,6 +768,16 @@
         window.onload = function() {
             window.scrollTo(0, 0);
         };
+
+        // Fecha o menu hamburger quando clica em algum link
+        const menuLinks = document.querySelectorAll('.nav-links li a');
+        const menuToggle = document.getElementById('menu-toggle');
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.checked = false;
+            });
+        });
     </script>
 </body>
 </html>
